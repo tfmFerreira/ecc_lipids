@@ -3,7 +3,7 @@
 %% The document class accepts keyval options, which should include 
 %% the target journal and optionally the manuscript type. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\documentclass[journal=jpcbfk,manuscript=article]{achemso} 
+\documentclass[journal=jctcce,manuscript=article]{achemso} 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Place any additional packages needed here.  Only include packages 
@@ -78,7 +78,7 @@
 \newlength{\figwidthsmall}
 \setlength{\figwidthsmall}{6 cm} 
 \newlength{\figwidthfull}
-\setlength{\figwidthfull}{14 cm} 
+\setlength{\figwidthfull}{16 cm} 
 \newlength{\figheightsmall}
 \setlength{\figheightsmall}{6 cm} 
 \newlength{\figheight}
@@ -108,25 +108,24 @@
  
 \author{Josef Melcr} 
 \email{melcr@marge.uochb.cas.cz} 
-%%\homepage[]{https://jmelcr.github.io/}
-\affiliation{Institute of Organic Chemistry and Biochemistry, 
-Academy of Sciences of the Czech Republic,  
-Prague 6, Czech Republic} 
+\affiliation[Czech Academy of Sciences]{Institute of Organic Chemistry and Biochemistry of the 
+Czech Academy of Sciences, Flemingovo n\'{a}m. 542/2, CZ-16610 Prague 6, Czech Republic}
+\alsoaffiliation{Groningen Biomolecular Sciences and Biotechnology Institute 
+and The Zernike Institute for Advanced Materials, 
+University of Groningen, 9747 AG Groningen, The Netherlands}
+
+\author{Tiago M. Ferreira}
+\affiliation{NMR group - Institut for Physics, Martin-Luther University Halle-Wittenberg} 
 \author{Pavel Jungwirth} 
 %%\homepage[]{http://jungwirth.uochb.cas.cz/}
 \affiliation{Institute of Organic Chemistry and Biochemistry, 
-Academy of Sciences of the Czech Republic,  
+Czech Academy of Sciences,  
 Prague 6, Czech Republic} 
-\alsoaffiliation{Department of Physics, Tampere University of Technology, P.O. Box 692, FI-33101 
-Tampere, Finland} 
-%SAMULI: We need to put tiago because the experimental acyl chain order parameters
-\author{Tiago Ferreira}
-\affiliation{Halle} 
 \author{O. H. Samuli Ollila} 
 \email{samuli.ollila@helsinki.fi} 
 %%\homepage[]{Your web page} 
 \affiliation{Institute of Organic Chemistry and Biochemistry, 
-Academy of Sciences of the Czech Republic,  
+Czech Academy of Sciences,  
 Prague 6, Czech Republic} 
 \alsoaffiliation{Institute of Biotechnology, University of Helsinki} 
  
@@ -160,28 +159,22 @@ Prague 6, Czech Republic}
 %% a running title from the author: this should be supplied as an 
 %% optional argument to \title. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%\title[] 
-%  {Accurate interactions of cations with 
-%   neutral and negatively charged membranes 
-%   via combination of experiments and molecular simulation}
-
-%%SAMULI: new suggestion for the preliminary title
 \title[] 
-  { SUPPLEMENTARY INFORMATION: Improved Cation Binding to Lipid Bilayer with Negatively Charged POPS by Effective Inclusion of Electronic Polarization}
-%    Detailed structure of negatively charged membranes 
-%    of phosphatidylserine and phosphatidylcholine 
-%    at concentrations of calcium, sodium and potassium salts
-%    from molecular dynamics simulations with electronic polarization }
+      { SUPPLEMENTARY INFORMATION: 
+        Improved Cation Binding to Lipid Bilayer with
+        Negatively Charged POPS by Effective
+        Inclusion of Electronic Polarization
+      }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% Some journals require a list of abbreviations or keywords to be 
 %% supplied. These should be set up here, and will be printed after 
 %% the title and author information, if needed. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\abbreviations{IR,NMR,UV,MD,ECC,PC,PS,POPS,POPS} 
-\keywords{MD simulation, molecular modeling, 
-          polarizability, polarization,
-          phospholipids, phosphatidylserine} 
+%\abbreviations{IR,NMR,UV,MD,ECC,PC,PS,POPS,POPS} 
+%\keywords{MD simulation, molecular modeling, 
+%          polarizability, polarization,
+%          phospholipids, phosphatidylserine} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %% The manuscript does not need to include \maketitle, which is 
@@ -195,14 +188,39 @@ Prague 6, Czech Republic}
 
 
 \begin{document} 
- 
+
+\clearpage
+\section{Simulation details}
+\begin{table}[!h]
+  \caption{Simulation parameters}
+  \label{tbl:mdpar}
+  \begin{tabular}{ll}
+    simulation property & parameter   \\
+    \hline
+    time-step           & 2~fs         \\
+    equilibration time  & 50~ns  \\
+    total simulation time     & $\geq 1 \mu$s  \\
+    temperature         & 298~K       \\
+    thermostat          & v-rescale  \cite{bussi07}   \\
+    barostat            & Parrinello-Rahman, semi-isotropic \cite{parrinello81} \\
+    long-range electrostatics & PME  \cite{darden93}  \\
+    cut-off scheme      & Verlet \cite{Pall13}      \\
+    Coulomb and VdW cut-off & 1.0~nm \\
+    constraints         & LINCS, only hydrogen atoms \cite{hess97} \\
+    constraints for water & SETTLE  \cite{miyamoto92} \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\clearpage
 \section{NMR experiments}
 
 \begin{figure}[!h] 
   \centering 
   \includegraphics[width=\textwidth]{../Fig/POPSINEPT.pdf}
   \caption{\label{INEPT}
-    Refocused-INEPT $^{13}$C spectrum of POPS multilamellar vesicles.
+    Refocused-INEPT $^{13}$C spectrum of multilamellar POPS vesicles at 298 K
+    with peak assignments for non--crowded spectral region ({\it sn}-1 chain in parenthesis).
   }
 \end{figure}
 
@@ -210,7 +228,8 @@ Prague 6, Czech Republic}
   \centering 
   \includegraphics[width=\textwidth]{../Fig/crowded_region.pdf}
   \caption{\label{R-PDLF}
-    2D-NMR R-PDLF spectra from the acyl chain region of POPS lipid bilayer.
+    2D-NMR R-PDLF spectra from the crowded spectral region of multilamellar POPS vesicles with the peak
+    assignment. Apostrophes refer to the palmitoyl ({\it sn}-1) chain.
   }
 \end{figure}
 
@@ -218,7 +237,8 @@ Prague 6, Czech Republic}
   \centering 
   \includegraphics[width=\textwidth]{../Fig/slices_used.eps}
   \caption{\label{R-PDLFslices}
-    Dipolar slices from the R-PDLF spectra used to determine the acyl chain order parameters of POPS.
+    Dipolar slices from the R-PDLF spectra of multilamellar POPS vesicles used to determine the acyl chain order parameters.
+    Numbers of on top of figures refer to the chemical shift (left) and order parameter value (right).
   }
 \end{figure} 
 
@@ -244,29 +264,21 @@ Prague 6, Czech Republic}
 \section{Interactions of POPS with \ce{K+} and \ce{Na+} counterions and POPC}
 
 % SAMULI: I have moded the density profile figure in the main text
-\begin{figure}[hbp!] 
+\begin{figure}[!h] 
   \centering 
-%  \includegraphics[height=\figheightsmall]{../img/ecc_pops/density_profiles_na-k-counterions_wat_phos_compar_purePOPS_ecclipids-lipid17.pdf}
-  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_nacl.pdf} 
-  \includegraphics[height=\figheightsmall]{../Fig/order_parameters_changes_A-B_PC-PS_mix_POPS_kcl.pdf} 
-%  \caption{\label{fig:POPS-counterions-dens}
-%    \textbf{Left panel:} Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
-%    in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of pure POPS bilayers.  
-%    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
-%}
+  \includegraphics[width=\figwidthfull]{../img/deltaOP_mix_PC-PS_SupplInf-POPS-OP.pdf} 
   \caption{\label{fig:delta_ordPar_NaCl_PC-PS_mix_PS} 
-    %\textbf{Right panels:}
-    The POPS head group order parameters, the P--N (circles) and C$_\beta$--C$_\gamma$ vector angles (stars)
+    \textbf{(A)} Number density profiles of \ce{K^{+}} and \ce{Na^{+}} counterions along the membrane normal axis
+    in ECC-lipids (solid lines) and Lipid17/Dang (dashed lines) simulations of POPC:POPS (5:1) bilayers.  
+    The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+    \textbf{(B, C)} The POPS head group order parameters, the P--N (circles) and C$_\beta$--C$_\gamma$ vector angles (stars) 
     with respect to the membrane normal as a function of POPC content in a bilayer
-    from ECC-lipids and Lipid17/Dang simulations with \ce{Na^+} (left) and \ce{K^+} (right) counterions.
-    Experimental order parameter values and signs for pure POPS are from Ref. \citenum{NMRlipidsIV} and values
-    for POPC:POPS (5:1) mixture from Ref. \citenum{roux90} 
-    (only \ce{Na^+} counterions, but shown with dashed lines also in the right hand side plots for \ce{K+}).
-    % No translation in y-axis done in this plot:
-    %The underestimated response of ECC-lipids with \ce{Na^+} counterions 
-    %is likely due to a still slightly overestimated binding affinity of \ce{Na^+} to the phospholipids,
-    %which is corroborated by the series with \ce{K^+} counterions (lower affinity than \ce{Na^+}),
-    %where the response is closer to the experiment, which uses only \ce{Na^+} counterions. 
+    from ECC-lipids and Lipid17/Dang simulations with \ce{Na^+} (C) and \ce{K^+} (B) counterions.
+    Experimental order parameter values are from Ref. \citenum{scherer87}
+    and the signs from Ref.~\citenum{ferreira16} 
+    (only \ce{Na^+} counterions, but shown also in the left plots (B) for \ce{K+} with dashed lines).
+    Error bars are not visible for most of the simulation points because they are smaller than the point size.
+    Chemical structure and labelling of carbon segments of POPC is shown in Fig.~\ref{fig:delta_ordPar_monoval_PCPS} in the main text. 
   }
 \end{figure} 
 
@@ -285,6 +297,24 @@ Prague 6, Czech Republic}
     additional \ce{KCl} (top) and \ce{NaCl} (bottom) concentrations.
     The additional \ce{Na^+} are not distinguished from the counterions in bottom plot.
     The density profiles of phosphate groups and water are divided by 4 and 100, respectively.  
+  }
+\end{figure} 
+
+
+\pagebreak
+
+
+
+
+\section{Representative example configurations of \ce{Ca^{2+}} coordinated complexes with POPS phospholipids}
+
+\begin{figure}[!h] 
+  \centering 
+  \includegraphics[width=\figwidthfull]{../img/populations_stoichiometry_structures_SI.pdf}
+  \caption{\label{fig:strcutures_SI} 
+    Representative example configurations of \ce{Ca^{2+}} coordinated complexes 
+    of only one POPS (A), one POPS with one POPC (B) or two POPS lipids (C). 
+    Probabilities of different calcium-phospholipid complexes are shown in Fig.~\ref{fig:cacl_complexes} in the main text. 
   }
 \end{figure} 
 
@@ -325,24 +355,22 @@ Prague 6, Czech Republic}
       PC and COO$^-$ in PS   &   17   &        \\
       PC and carbonyls in PS &   <1   &        \\
   \end{tabular} \\
-  %\todo{I have commented out the surface excess values (available in text) and concentrations (now in caption) from the table.} \\
-  %\todo{I do not understand the numbers for different moieties. Are these probabilities that the calcium binds only to these moieties and
-  %  nothing else? In total, 41 \% binds to PS lipids, but only 2 \% and 4 \% to phosphates and COO$^-$, respectively? Where do the rest bind?
-  %  I think that we should show the total probabilities to bind to different moieties.}
 \end{table} 
 
 
 \pagebreak
 \section{Residence times of cations}
 
-In ECC-lipid simulations, 90\% of the calcium residence times are shorter than $60\,\mathrm{ns}$ for pure POPC bilayer
-and shorter than $200\,\mathrm{ns}$ for POPC:POPS (5:1) mixture, while the
-longest observed residence times are $141\,\mathrm{ns}$ and $485\,\mathrm{ns}$, respectively (Fig.~\ref{fig:hist_residence_times}).
-The significantly shorter residence times in ECC-lipid simulations than in simulations 
-with other force fields~\cite{javanainen17, catte16} suggests that 1~$\mu$s simulations in this work
-are sufficiently long to equlibrate the ion concentration on lipid bilayer interface.
-Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:1) mixture than in
-pure POPC.
+% Already in the main text
+%
+%In ECC-lipid simulations, 90\% of the calcium residence times are shorter than $60\,\mathrm{ns}$ for pure POPC bilayer
+%and shorter than $200\,\mathrm{ns}$ for POPC:POPS (5:1) mixture, while the
+%longest observed residence times are $141\,\mathrm{ns}$ and $485\,\mathrm{ns}$, respectively (Fig.~\ref{fig:hist_residence_times}).
+%The significantly shorter residence times in ECC-lipid simulations than in simulations 
+%with other force fields~\cite{javanainen17, catte16} suggests that 1~$\mu$s simulations in this work
+%are sufficiently long to equlibrate the ion concentration on lipid bilayer interface.
+%Interestingly, the calcium residence times are 3-4 times longer in POPC:POPS (5:1) mixture than in
+%pure POPC.
 
 %Both estimates of the residence times come from simulations with comparable concentrations of around $250\mathrm{mM}$;
 %the simulation with the neutral membrane has a bulk concentration of calcium $C_{ion} = 280\mathrm{mM}$, 
